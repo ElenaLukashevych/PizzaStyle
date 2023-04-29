@@ -14,7 +14,7 @@ function App() {
             <Header/>
 
       <Routes>
-      <Route path="/" element={<PizzasList/>} />
+      <Route index path="/" element={<PizzasList/>} />
       <Route path="/Cart" element={<CartPage/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>

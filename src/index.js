@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     {" "}
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/PizzaStyle">
       <PersistGate persistor={persistor}>
         <App />
       </PersistGate>
