@@ -1,7 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../CartItem/CartItem';
+import {remove} from '../../redux/slice';
 
 function CartList() {
+  const dispatch = useDispatch();
+
     const cart = useSelector((state) => state.pizzas.cart)
 
     return(
@@ -16,6 +19,7 @@ function CartList() {
         quantity={item.quantity}
       />
     ))}
+    <button onClick={() => dispatch(remove())}> Make an order</button>
 
         </ul>
     )

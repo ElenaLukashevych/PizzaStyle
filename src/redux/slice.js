@@ -1,18 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { products } from "../components/products";
+import { createSlice } from '@reduxjs/toolkit';
+import { products } from '../components/products';
 const initialState = {
   pizzas: products,
   cart: [],
 };
 
 export const pizzasSlice = createSlice({
-  name: "pizzas",
+  name: 'pizzas',
   initialState: initialState,
   reducers: {
     addToCart: (state, action) => {
-      const itemInCart = state.cart.find(
-        (item) => item.id === action.payload.id
-      );
+      const itemInCart = state.cart.find(item => item.id === action.payload.id);
       if (itemInCart) {
         itemInCart.quantity++;
       } else {
@@ -20,12 +18,12 @@ export const pizzasSlice = createSlice({
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find(item => item.id === action.payload);
       item.quantity++;
     },
 
     decrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find(item => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1;
       } else {
@@ -33,14 +31,21 @@ export const pizzasSlice = createSlice({
       }
     },
     removeItem: (state, action) => {
-      const removeItem = state.cart.filter(
-        (item) => item.id !== action.payload
-      );
+      const removeItem = state.cart.filter(item => item.id !== action.payload);
       state.cart = removeItem;
+    },
+
+    remove(state, _) {
+      return { ...state, cart: [] };
     },
   },
 });
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem } =
-  pizzasSlice.actions;
+export const {
+  addToCart,
+  incrementQuantity,
+  decrementQuantity,
+  removeItem,
+  remove,
+} = pizzasSlice.actions;
 export const pizzaReducer = pizzasSlice.reducer;

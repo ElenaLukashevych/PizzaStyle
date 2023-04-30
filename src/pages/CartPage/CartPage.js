@@ -1,26 +1,26 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import CartList from '../../components/CartList'
-
+import CartList from '../../components/CartList';
+import TotalPrice from '../../components/TotalPrice';
 
 function CartPage() {
-    const cart = useSelector((state) => state.pizzas.cart)
+  const cart = useSelector(state => state.pizzas.cart);
 
-    return(
-       <>  {cart.length <= 0 ? (
-        <p>Please, choose pizza <Link to='/'>here</Link></p>
+  return (
+    <>
+      {' '}
+      {cart.length <= 0 ? (
+        <p>
+          Please, choose pizza <Link to="/">here</Link>
+        </p>
       ) : (
-
-        <CartList/>
+        <>
+          <CartList />
+          <TotalPrice />
+        </>
       )}
-       
-       <ul>
+    </>
+  );
+}
 
-
-       </ul>
-       </>
-    )
-    
-    };
-    
-    export default CartPage;
+export default CartPage;
