@@ -7,29 +7,29 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
-import { configureStore } from "@reduxjs/toolkit";
+} from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import { pizzaReducer } from "./slice";
+import { pizzaReducer } from './slice';
 
 const persistConfig = {
   key: 'root',
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, pizzaReducer)
+const persistedReducer = persistReducer(persistConfig, pizzaReducer);
 
 export const store = configureStore({
   reducer: {
     pizzas: persistedReducer,
   },
 
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    })
+    }),
 });
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);

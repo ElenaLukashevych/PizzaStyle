@@ -15,20 +15,25 @@ function Header() {
   return (
     <header className={s.header}>
       <nav className={s.nav}>
-        <NavLink className={s.logo} to="/">PizzaStyle </NavLink>
-       <div className={s.box}> <NavLink
-          className={({ isActive }) => (isActive ? s.active : s.link)}
-          to="/"
-        >
-          Pizza
+        <NavLink className={s.logo} to="/">
+          PizzaStyle{' '}
         </NavLink>
-        <NavLink
-          className={({ isActive }) => (isActive ? s.active : s.link)}
-          to="/Cart"
-        >
-          Cart
-        </NavLink>{' '}
-        <p>{getTotalQuantity() || 0}</p></div>
+        <div className={s.box}>
+          {' '}
+          <NavLink
+            className={({ isActive }) => (isActive ? s.active : s.link)}
+            to="/"
+          >
+            Pizza
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? s.active : s.link)}
+            to="/Cart"
+          >
+            Cart
+          </NavLink>{' '}
+          <p className={s.text}>{getTotalQuantity() || 0}</p>
+        </div>
       </nav>
     </header>
   );

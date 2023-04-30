@@ -1,17 +1,18 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   incrementQuantity,
   decrementQuantity,
   removeItem,
 } from '../../redux/slice';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import s from './Buttons.module.css';
 
 function Buttons({ id }) {
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.pizzas.cart);
 
+  const cart = useSelector(state => state.pizzas.cart);
   const count = cart.find(item => item.id === id);
   const quantity = count ? count.quantity : 0;
+
   const handleDecrement = id => {
     if (count.quantity <= 1) {
       dispatch(removeItem(id));
@@ -19,15 +20,22 @@ function Buttons({ id }) {
   };
 
   return (
-    <>
+    <div className={s.flex}>
       {quantity > 0 && (
         <>
-          <button onClick={() => handleDecrement(id)}>-</button>
-          <p>{quantity}</p>
-          <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
+          <button className={s.button} onClick={() => handleDecrement(id)}>
+            -
+          </button>
+          <p className={s.text}>{quantity}</p>
+          <button
+            className={s.button}
+            onClick={() => dispatch(incrementQuantity(id))}
+          >
+            +
+          </button>
         </>
       )}
-    </>
+    </div>
   );
 }
 

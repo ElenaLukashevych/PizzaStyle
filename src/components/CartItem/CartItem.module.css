@@ -1,20 +1,6 @@
-.item {
-  padding: 10px;
-}
-
-.title {
-  display: block;
-  margin-bottom: 200px;
-}
-
-.text {
-  font-style: italic;
-}
-
 .button {
   min-width: 100px;
   min-height: 40px;
-  display: inline-block;
   border-radius: 4px;
   border: none;
   font-size: 16px;

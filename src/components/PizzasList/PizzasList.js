@@ -5,8 +5,6 @@ import s from './PizzaList.module.css';
 
 function PizzasList() {
   const pizzas = useSelector(getPizza);
-  // console.log(pizzas);
-  // console.log(cart);
 
   return (
     <ul className={s.grid}>
