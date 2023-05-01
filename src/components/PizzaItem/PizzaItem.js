@@ -11,7 +11,10 @@ function PizzasItem({ id, title, description, price, image, quantity }) {
   return (
     <li className={s.item}>
       <h2 className={s.title}>{title}</h2>
-      <img alt={title} src={image} />
+      <div className={s.box}>
+        {' '}
+        <img className={s.img} alt={title} src={image} />
+      </div>
       <p className={s.text}>{description}</p>
       <p>{price} UAH</p>
 
